@@ -14,7 +14,7 @@ fs.readFile("./database/data.json", "utf8", function (err, data) {
 
 const app = express();
 
-app.use("/", authRouter);
+app.use("/api/v1", authRouter);
 
 app.get("/", (req, res) => {
   res.json(obj);
