@@ -8,15 +8,15 @@ router.post(
   "/register",
   [
     body("email", "formato email incorrecto").trim().isEmail().normalizeEmail(),
-    body("password", "formato de password incorrecto")
-      .trim()
-      .isLength({ min: 6 })
-      .custom((value, { req }) => {
-        if (value !== req.repassword) {
+    body("password", "minimo 6 caracteres").trim().trim().isLength({ min: 6 }),
+    body("password", "formato de password incorrecto").custom(
+      (value, { req }) => {
+        if (value !== req.body.repassword) {
           throw new Error("no coinciden las contraseñas");
         }
         return value;
-      }),
+      }
+    ),
   ],
   register
 );
