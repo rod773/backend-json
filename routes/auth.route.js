@@ -6,7 +6,18 @@ const router = express.Router();
 
 router.post(
   "/register",
-  [body("email", "formato email incorrecto").isEmail().normalizeEmail()],
+  [
+    body("email", "formato email incorrecto").trim().isEmail().normalizeEmail(),
+    body("password", "formato de password incorrecto")
+      .trim()
+      .isLength({ min: 6 })
+      .custom((value, { req }) => {
+        if (value !== req.repassword) {
+          throw new Error("no coinciden las contraseñas");
+        }
+        return value;
+      }),
+  ],
   register
 );
 
