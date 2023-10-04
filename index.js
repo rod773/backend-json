@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import fs from "fs";
+import cors from "cors";
 
 import authRouter from "./routes/auth.route.js";
 
@@ -13,6 +14,10 @@ fs.readFile("./database/data.json", "utf8", function (err, data) {
 });
 
 const app = express();
+
+app.use(cors());
+
+app.use(express.json());
 
 app.use("/api/v1", authRouter);
 
