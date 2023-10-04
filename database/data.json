@@ -1,1 +1,12 @@
-[{"id":1,"title":"bird"},{"id":2,"title":"eagle"}]
+[
+  {
+    "id": 1,
+    "email": "eagle@mail.com",
+    "password": "eagle"
+  },
+  {
+    "id": 2,
+    "email": "bird@mail.com",
+    "password": "bird"
+  }
+]
