@@ -32,6 +32,9 @@ app.get("/products", (req, res) => {
     console.log("done writting");
   });
   fs.readFile("data.json", "utf8", function (err, data) {
+    if (err) {
+      (err) => console.log(err);
+    }
     // Display the file content
     console.log(data);
     obj = JSON.parse(data);
