@@ -2,6 +2,8 @@ import express from "express";
 import "dotenv/config";
 import fs from "fs";
 
+import authRouter from "./routes/auth.route.js";
+
 let obj = [];
 
 fs.readFile("./database/data.json", "utf8", function (err, data) {
@@ -11,6 +13,8 @@ fs.readFile("./database/data.json", "utf8", function (err, data) {
 });
 
 const app = express();
+
+app.use("/", authRouter);
 
 app.get("/", (req, res) => {
   res.json(obj);
